@@ -1,0 +1,8 @@
+[user]
+    name = Arun S
+    email = arun@indeliblestamp.com
+[push]
+    default = simple
+[color]
+    ui = true
+
