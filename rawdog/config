@@ -24,7 +24,7 @@ splitstate true
 
 # The maximum number of articles to show on the generated page.
 # Set this to 0 for no limit.
-maxarticles 0
+maxarticles 300
 
 # The maximum age of articles to show on the generated page.
 # Set this to 0 for no limit.
@@ -147,8 +147,7 @@ feeditemtemplate default
 # directory. Specify this as "-" to write the HTML to stdout.
 # (You will probably want to make this an absolute path, else rawdog will write
 # to a file in your ~/.rawdog directory.)
-outputfile /var/www/rawdog/index.html
-#outputfile /home/you/public_html/rawdog.html
+outputfile /var/www/html/feeds/index.html
 
 # Whether to use a <meta http-equiv="Refresh" ...> tag in the generated
 # HTML to indicate that the page should be refreshed automatically. If
@@ -284,7 +283,7 @@ changeconfig true
 feed 3h https://www.raspberrypi.org/feed/ define_group=linux
 feed 3h https://fedoramagazine.org/feed/ define_group=linux
 feed 3h http://lwn.net/headlines/newrss define_group=linux
-feed 3h http://www.linuxvoice.com/feed/ define_group=linux
+feed 3h https://www.linuxvoice.com/feed/ define_group=linux
 feed 3h http://feeds.feedburner.com/linuxjournalcom define_group=linux
 feed 3h https://github.com/blog/all.atom define_group=progg
 feed 3h http://komodoide.com/blog.rss define_group=progg
@@ -314,7 +313,6 @@ feed 3h http://www.theguardian.com/science/brain-flapping/rss define_group=news
 feed 3h http://phenomena.nationalgeographic.com/blog/not-exactly-rocket-science/feed/ define_group=science
 feed 3h http://feeds.feedburner.com/TroyHunt
 feed 3h http://blog.golang.org/feed.atom define_group=progg
-feed 3h http://harmful.cat-v.org/Blog/index.rss define_group=progg
 feed 3h http://afreshcup.com/home/atom.xml
 feed 3h http://feeds.regulargeek.com/RegularGeek
 feed 3h https://medium.com/feed/this-is-not-a-monad-tutorial define_group=progg
@@ -352,3 +350,10 @@ feed 3h http://devopsreactions.tumblr.com/rss define_group=comics
 feed 3h http://feeds.feedburner.com/Explosm define_group=comics
 feed 3h http://feeds.feedburner.com/oatmealfeed define_group=comics
 feed 3h http://nedroid.com/feed/ define_group=comics
+feed 3h http://apod.nasa.gov/apod.rss
+feed 3h https://lobste.rs/rss
+feed 3h http://blog.thecodewhisperer.com/atom.xml
+feed 3h http://lambda-the-ultimate.org/rss.xml
+feed 3h http://martinfowler.com/feed.atom
+feed 3h http://danluu.com/atom.xml
+feed 3h http://pl6anet.org/atom.xml
