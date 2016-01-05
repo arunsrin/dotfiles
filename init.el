@@ -16,7 +16,10 @@
 (defvar myPackages
   '(better-defaults
     ein ;; (emacs ipython notebook)
-    elpy ;; (emacs python stuff)
+    epc
+    auto-complete
+    jedi
+    python-mode
     flycheck 
     color-theme
     py-autopep8
@@ -144,33 +147,18 @@
   "An alias for y-or-n-p, because I hate having to type 'yes' or 'no'."
   (y-or-n-p arg))
 
-;; PYTHON CONFIGURATION
-;; --------------------------------------
-;; For elpy, install these first:
-;; # Either of these
-;; pip install rope
-;; pip install jedi
-;; # flake8 for code checks
-;; pip install flake8
-;; # importmagic for automatic imports
-;; pip install importmagic
-;; # and autopep8 for automatic PEP8 formatting
-;; pip install autopep8
-;; # and yapf for code formatting
-;; pip install yapf
-
-(elpy-enable)
-(cond 
- ((string-match "linux" system-configuration)
-  (elpy-use-ipython)))
-
-;; use flycheck not flymake with elpy
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
 ;; enable autopep8 on save
 (require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; show recently used files with C-xC-r
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; init.el ends here
