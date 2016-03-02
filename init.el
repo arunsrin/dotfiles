@@ -18,7 +18,7 @@
     ein ;; (emacs ipython notebook)
     epc
     auto-complete
-    jedi
+    anaconda-mode
     python-mode
     flycheck 
     color-theme
@@ -37,7 +37,7 @@
 ;; --------------------------------------
 
 (setq inhibit-startup-message t) ;; hide the startup message
-;; (load-theme 'material t) ;; load material theme
+;;(load-theme 'material t) ;; load material theme
 
 (require 'color-theme)
 (color-theme-initialize)
@@ -151,8 +151,8 @@
 (require 'py-autopep8)
 ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; show recently used files with C-xC-r
