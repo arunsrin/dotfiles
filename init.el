@@ -37,11 +37,11 @@
 ;; --------------------------------------
 
 (setq inhibit-startup-message t) ;; hide the startup message
-;;(load-theme 'material t) ;; load material theme
+(load-theme 'material t) ;; load material theme
 
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-calm-forest)
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-calm-forest)
 
 (global-linum-mode t) ;; enable line numbers globally
 
