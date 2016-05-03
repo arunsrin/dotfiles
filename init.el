@@ -126,7 +126,7 @@
 
 
 ;; shortening of often used commands
-(defalias 'sh 'eshell)
+(defalias 'sh 'term)
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'lml 'list-matching-lines)
 (defalias 'dml 'delete-matching-lines)
