@@ -8,6 +8,7 @@
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
+(setq package-check-signature nil)
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -26,6 +27,7 @@
     elscreen
     smooth-scrolling
     htmlize
+    deft
     material-theme))
 
 (mapc #'(lambda (package)
@@ -64,6 +66,11 @@
                                                     backup-directory-alist
                                                     (list (cons "." backup-dir))))
  ((string-match "nt" system-configuration)
+  (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
+  (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
+                                                     backup-directory-alist
+                                                     (list (cons "." backup-dir))))
+ ((string-match "mingw" system-configuration)
   (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
                                                      backup-directory-alist
@@ -126,7 +133,7 @@
 
 
 ;; shortening of often used commands
-(defalias 'sh 'term)
+(defalias 'sh 'eshell)
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'lml 'list-matching-lines)
 (defalias 'dml 'delete-matching-lines)
@@ -162,3 +169,54 @@
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 (elscreen-start)
 ;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(display-time-mode t)
+ '(safe-local-variable-values
+   (quote
+    ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode 1))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Hack" :foundry "outline" :slant normal :weight bold :height 98 :width normal)))))
+
+;;deft for notes
+(require 'deft)
+(setq deft-extensions '("txt" "tex" "org"))
+(setq deft-directory "~/notes")
+(global-set-key [f8] 'deft)
+
+;;org-publish for notes
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("org-notes"
+         :base-directory "~/notes/"
+         :base-extension "org"
+         :publishing-directory "~/notes/public_html/"
+         :recursive t
+         :exclude "Incoming.org"
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4             ; Just the default for this project.
+         :auto-preamble t
+         :auto-sitemap t                ; Generate sitemap.org automagically...
+         :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+         )
+        ("org-static"
+         :base-directory "~/notes/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/notes/public_html/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("notes" :components ("org-notes" "org-static"))
+        ))
