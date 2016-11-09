@@ -20,6 +20,7 @@
     epc
     auto-complete
     anaconda-mode
+    persistent-scratch
     python-mode
     flycheck 
     color-theme
@@ -175,6 +176,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(display-time-mode t)
+ '(package-selected-packages
+   (quote
+    (persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
  '(safe-local-variable-values
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
@@ -220,3 +224,6 @@
          )
         ("notes" :components ("org-notes" "org-static"))
         ))
+
+;; persistent-scratch
+(persistent-scratch-setup-default)
