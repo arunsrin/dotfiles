@@ -30,5 +30,6 @@ highlight article     ":.*\\(image\\)$"                     color74  default
 highlight article     ":.*\\(embedded flash\\)$"            color74  default
 
 color listnormal                                            white    default
-color listfocus                                             default  color240
+color listfocus                                             color136  color240
+color listfocus_unread                                      color130  color240
 color info                                                  default  color240
