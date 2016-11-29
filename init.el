@@ -227,3 +227,11 @@
 
 ;; persistent-scratch
 (persistent-scratch-setup-default)
+
+;; format json
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
+    )
+  )
