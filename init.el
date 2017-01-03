@@ -22,7 +22,9 @@
     anaconda-mode
     persistent-scratch
     python-mode
-    flycheck 
+    flycheck
+    paredit
+    geiser
     color-theme
     py-autopep8
     elscreen
