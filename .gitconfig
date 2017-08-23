@@ -1,8 +1,11 @@
 [user]
     name = Arun S
-    email = arun@indeliblestamp.com
+    email = me@arunsr.in
 [push]
     default = simple
 [color]
     ui = true
-
+[alias]
+    st = status --branch --short
+    wat = log --graph --decorate --oneline -15
+    follow = log --follow -p
