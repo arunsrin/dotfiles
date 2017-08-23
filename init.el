@@ -180,7 +180,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
+    (markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
  '(safe-local-variable-values
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
@@ -237,3 +237,6 @@
     (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
     )
   )
+
+;; server mode
+(server-mode)

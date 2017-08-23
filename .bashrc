@@ -13,7 +13,7 @@ fi
 
 # User specific aliases and functions
 function    p               { less $@; }
-function    e               { emacs -nw $@; }
+function    e               { emacsclient $@; }
 function    lr               { ls --color=auto -lrt $@; }
 function    l               { ls --color=auto $@; }
 function    sl               { ls --color=auto $@; }
