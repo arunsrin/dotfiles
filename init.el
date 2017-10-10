@@ -238,5 +238,15 @@
     )
   )
 
+;; gtags/gnu globals
+(setq load-path (cons "/usr/share/emacs/site-lisp/" load-path))
+(autoload 'gtags-mode "gtags" "" t)
+(setq c-mode-hook
+      '(lambda ()
+         (gtags-mode 1)
+         ))
+(setq gtags-suggested-key-mapping t)
+(setq gtags-auto-update t)
+
 ;; server mode
 (server-mode)
