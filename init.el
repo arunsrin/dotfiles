@@ -30,6 +30,8 @@
     elscreen
     smooth-scrolling
     htmlize
+    magit
+    fzf
     deft
     material-theme))
 

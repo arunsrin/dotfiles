@@ -24,6 +24,7 @@ function    pd2               { pushd +2 $@; }
 function    pd3               { pushd +3 $@; }
 function    ..               { cd ..; }
 function    ,,               { cd ../..; }
+function mygetcert {  echo |     openssl s_client -connect $1 2>/dev/null |     openssl x509 -text ; }
 # stty columns 120
 export PS1="bash-\v \w$ "
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
@@ -33,4 +34,5 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR=vim
 export PATH=$PATH:$HOME/bin/
 TZ='Asia/Kolkata'; export TZ
-
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
