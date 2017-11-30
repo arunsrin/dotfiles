@@ -25,7 +25,7 @@ function    pd3               { pushd +3 $@; }
 function    ..               { cd ..; }
 function    ,,               { cd ../..; }
 # stty columns 120
-export PS1="bash-\v \w$ "
+export PS1="[\u@\h \W]\$ "
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
