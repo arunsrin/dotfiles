@@ -8,6 +8,7 @@
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
+
 (setq package-check-signature nil)
 
 (package-initialize)
@@ -34,6 +35,9 @@
     fzf
     deft
     color-theme-solarized
+    go-mode
+    go-autocomplete
+    exec-path-from-shell
     material-theme))
 
 (mapc #'(lambda (package)
@@ -47,9 +51,9 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 ;; (load-theme 'material t) ;; load material theme
 
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-solarized)
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-solarized)
 ;; (color-theme-calm-forest)
 
 (global-linum-mode t) ;; enable line numbers globally
@@ -184,7 +188,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
+    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
  '(safe-local-variable-values
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
@@ -254,3 +258,53 @@
 
 ;; server mode
 (server-mode)
+
+;; golang stuff
+;; Dependencies:
+;; go get github.com/rogpeppe/godef
+;; go get golang.org/x/tools/cmd/godoc
+;; go get -u github.com/nsf/gocode
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+(setenv "GOPATH" "/home/arunsrin/code/gostuff")
+(add-to-list 'exec-path "/home/arunsrin/go/bin")
+
+;; FMT before Save , godef jump
+(defun my-go-mode-hook ()
+  ; Call Gofmt before saving                                                    
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Godef jump key binding                                                      
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  )
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+;; Autocomplete
+(defun auto-complete-for-go ()
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+
+(with-eval-after-load 'go-mode
+  (require 'go-autocomplete))
+
+;; build on M-x compile
+(defun my-go-mode-hook ()
+  ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
+  ; Godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+)
+(add-hook 'go-mode-hook 'my-go-mode-hook)
