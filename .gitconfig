@@ -1,6 +1,9 @@
-[user]
-    name = Arun S
-    email = me@arunsr.in
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig.work
+
+[includeIf "gitdir:~/code/"]
+    path = ~/.gitconfig.personal
+
 [push]
     default = simple
 [color]
