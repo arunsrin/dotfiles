@@ -51,10 +51,8 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 ;; (load-theme 'material t) ;; load material theme
 
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-solarized)
-;; (color-theme-calm-forest)
+(set-frame-parameter nil 'background-mode 'light)
+(load-theme 'solarized t)
 
 (global-linum-mode t) ;; enable line numbers globally
 
