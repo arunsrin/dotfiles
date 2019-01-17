@@ -37,3 +37,6 @@ TZ='Asia/Kolkata'; export TZ
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 umask 022
+# dircolors for solarized light
+# (from https://github.com/seebi/dircolors-solarized)
+[ -f ~/.dircolors ] && eval `dircolors ~/.dircolors`
