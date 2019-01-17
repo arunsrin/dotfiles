@@ -17,7 +17,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'sjl/badwolf'
 Plugin 'tpope/vim-markdown'
 Plugin 'taglist.vim'
 Plugin 'klen/python-mode'
@@ -73,7 +72,8 @@ set encoding=utf-8
 
 let python_highlight_all=1
 syntax on
-colorscheme badwolf
+set background=light
+colorscheme solarized
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set ignorecase
 set paste
