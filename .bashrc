@@ -36,3 +36,4 @@ export PATH=$PATH:$HOME/bin/
 TZ='Asia/Kolkata'; export TZ
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+umask 022
