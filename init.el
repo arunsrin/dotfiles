@@ -29,7 +29,7 @@
     flycheck
     paredit
     geiser
-    color-theme
+    ;; color-theme
     py-autopep8
     elscreen
     smooth-scrolling
@@ -37,7 +37,7 @@
     magit
     fzf
     deft
-    color-theme-solarized
+    ;; color-theme-solarized
     go-mode
     go-autocomplete
     exec-path-from-shell
@@ -54,12 +54,16 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 ;; (load-theme 'material t) ;; load material theme
 
-(set-frame-parameter nil 'background-mode 'light)
-(load-theme 'solarized t)
-;; don't set background colour when in terminal
+;; (set-frame-parameter nil 'background-mode 'light)
+(if (display-graphic-p) 
+    (load-theme 'tsdh-light t) 
+  ;; use a different theme on the terminal
+  (load-theme 'wheatgrass t))
+
 (defun on-frame-open (frame)
-  (if (not (display-graphic-p frame))
+(if (not (display-graphic-p frame))
     (set-face-background 'default "unspecified-bg" frame)))
+
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
 (global-linum-mode t) ;; enable line numbers globally
@@ -194,7 +198,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
+    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft better-defaults auto-complete anaconda-mode)))
  '(safe-local-variable-values
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
@@ -262,7 +266,7 @@
 (setq gtags-auto-update t)
 
 ;; server mode
-(server-mode)
+;; (server-mode)
 
 ;; golang stuff
 ;; Dependencies:
