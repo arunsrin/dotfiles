@@ -56,7 +56,12 @@
 
 (set-frame-parameter nil 'background-mode 'light)
 (load-theme 'solarized t)
-
+;; don't set background colour when in terminal
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+    (set-face-background 'default "unspecified-bg" frame)))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
 (global-linum-mode t) ;; enable line numbers globally
 
 ;;Turn off crappy scrollbar and toolbar
