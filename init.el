@@ -17,6 +17,9 @@
 
 (defvar myPackages
   '(better-defaults
+    elfeed
+    elfeed-org
+    elfeed-goodies
     ein ;; (emacs ipython notebook)
     epc
     auto-complete
@@ -191,14 +194,13 @@
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
  '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(transient-mark-mode 1))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "outline" :slant normal :weight bold :height 98 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 128 :width normal)))))
 
 ;;deft for notes
 (require 'deft)
@@ -306,3 +308,18 @@
   (local-set-key (kbd "M-*") 'pop-tag-mark)
 )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+;; elfeed and elfeed-org stuff
+;; Load elfeed-org
+(require 'elfeed-org)
+
+;; Initialize elfeed-org
+;; This hooks up elfeed-org to read the configuration when elfeed
+;; is started with =M-x elfeed=
+(elfeed-org)
+
+;; Optionally specify a number of files containing elfeed
+;; configuration. If not set then the location below is used.
+;; Note: The customize interface is also supported.
+(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+
