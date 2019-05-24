@@ -17,6 +17,9 @@
 
 (defvar myPackages
   '(better-defaults
+    elfeed
+    elfeed-org
+    elfeed-goodies
     ein ;; (emacs ipython notebook)
     epc
     auto-complete
@@ -26,7 +29,7 @@
     flycheck
     paredit
     geiser
-    color-theme
+    ;; color-theme
     py-autopep8
     elscreen
     smooth-scrolling
@@ -34,7 +37,7 @@
     magit
     fzf
     deft
-    color-theme-solarized
+    ;; color-theme-solarized
     go-mode
     go-autocomplete
     exec-path-from-shell
@@ -51,9 +54,18 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 ;; (load-theme 'material t) ;; load material theme
 
-(set-frame-parameter nil 'background-mode 'light)
-(load-theme 'solarized t)
+;; (set-frame-parameter nil 'background-mode 'light)
+(if (display-graphic-p) 
+    (load-theme 'tsdh-light t) 
+  ;; use a different theme on the terminal
+  (load-theme 'wheatgrass t))
 
+(defun on-frame-open (frame)
+(if (not (display-graphic-p frame))
+    (set-face-background 'default "unspecified-bg" frame)))
+
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
 (global-linum-mode t) ;; enable line numbers globally
 
 ;;Turn off crappy scrollbar and toolbar
@@ -186,19 +198,18 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft color-theme better-defaults auto-complete anaconda-mode)))
+    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft better-defaults auto-complete anaconda-mode)))
  '(safe-local-variable-values
    (quote
     ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
  '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(transient-mark-mode 1))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "outline" :slant normal :weight bold :height 98 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 128 :width normal)))))
 
 ;;deft for notes
 (require 'deft)
@@ -255,7 +266,7 @@
 (setq gtags-auto-update t)
 
 ;; server mode
-(server-mode)
+;; (server-mode)
 
 ;; golang stuff
 ;; Dependencies:
@@ -306,3 +317,18 @@
   (local-set-key (kbd "M-*") 'pop-tag-mark)
 )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+;; elfeed and elfeed-org stuff
+;; Load elfeed-org
+(require 'elfeed-org)
+
+;; Initialize elfeed-org
+;; This hooks up elfeed-org to read the configuration when elfeed
+;; is started with =M-x elfeed=
+(elfeed-org)
+
+;; Optionally specify a number of files containing elfeed
+;; configuration. If not set then the location below is used.
+;; Note: The customize interface is also supported.
+(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+
