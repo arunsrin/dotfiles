@@ -37,6 +37,8 @@
     magit
     fzf
     deft
+    which-key
+    helpful
     ;; color-theme-solarized
     go-mode
     go-autocomplete
