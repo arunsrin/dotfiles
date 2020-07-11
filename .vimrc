@@ -73,7 +73,6 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 set background=light
-colorscheme solarized
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set ignorecase
 set paste
@@ -88,11 +87,12 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
 " OS Specific settings
 if ($OS == 'Windows_NT')
+		colorscheme solarized
         "vimwiki settings
         let g:vimwiki_list = [{'path': '~\OneDrive\Documents\GitHub\arunsrin.mkdocs\home',
                               \ 'syntax': 'markdown', 'ext': '.md'}]
 else
         "vimwiki settings
-        let g:vimwiki_list = [{'path': '~/code/arunsrin.mkdocs\home',
+        let g:vimwiki_list = [{'path': '~/code/arunsrin.mkdocs/home',
                               \ 'syntax': 'markdown', 'ext': '.md'}]
 endif
