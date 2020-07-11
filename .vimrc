@@ -18,7 +18,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-markdown'
-Plugin 'taglist.vim'
 Plugin 'klen/python-mode'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
@@ -28,6 +27,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/fzf'
+Plugin 'vimwiki/vimwiki'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,3 +85,14 @@ imap <F3> <C-R>=strftime("%A %Y%m%d")<CR>
 set laststatus=2 "airline needs this
 let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+
+" OS Specific settings
+if ($OS == 'Windows_NT')
+        "vimwiki settings
+        let g:vimwiki_list = [{'path': '~\OneDrive\Documents\GitHub\arunsrin.mkdocs\home',
+                              \ 'syntax': 'markdown', 'ext': '.md'}]
+else
+        "vimwiki settings
+        let g:vimwiki_list = [{'path': '~/code/arunsrin.mkdocs\home',
+                              \ 'syntax': 'markdown', 'ext': '.md'}]
+endif
