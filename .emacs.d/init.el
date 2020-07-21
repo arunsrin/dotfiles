@@ -22,6 +22,7 @@
     elfeed-goodies
     ein ;; (emacs ipython notebook)
     epc
+    sml-mode
     auto-complete
     anaconda-mode
     persistent-scratch
@@ -63,8 +64,8 @@
   (load-theme 'wheatgrass t))
 
 (defun on-frame-open (frame)
-(if (not (display-graphic-p frame))
-    (set-face-background 'default "unspecified-bg" frame)))
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame)))
 
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
@@ -87,12 +88,35 @@
   (defvar autosave-dir "~/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "~/.emacs.d/emacs_backups/" ) (setq
                                                     backup-directory-alist
-                                                    (list (cons "." backup-dir))))
+                                                    (list (cons "." backup-dir)))
+  ;; golang stuff
+  ;; Dependencies:
+  ;; go get github.com/rogpeppe/godef
+  ;; go get golang.org/x/tools/cmd/godoc
+  ;; go get -u github.com/nsf/gocode
+  (defun set-exec-path-from-shell-PATH ()
+    (let ((path-from-shell (replace-regexp-in-string
+			    "[ \t\n]*$"
+			    ""
+			    (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+      (setenv "PATH" path-from-shell)
+      (setq eshell-path-env path-from-shell) ; for eshell users
+      (setq exec-path (split-string path-from-shell path-separator))))
+
+  (when window-system (set-exec-path-from-shell-PATH))
+  (setenv "GOPATH" "/home/arunsrin/code/gostuff")
+  (add-to-list 'exec-path "/home/arunsrin/go/bin")
+  )
  ((string-match "nt" system-configuration)
   (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
                                                      backup-directory-alist
-                                                     (list (cons "." backup-dir))))
+                                                     (list (cons "." backup-dir)))
+
+  (setenv "PATH" (concat "C:/Program Files (x86)/SMLNJ/bin:" (getenv "PATH")))
+  (setq exec-path (cons "C:/Program Files (x86)/SMLNJ/bin" exec-path))
+  )
+
  ((string-match "mingw" system-configuration)
   (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
@@ -211,7 +235,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 128 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
 ;;deft for notes
 (require 'deft)
@@ -270,29 +294,12 @@
 ;; server mode
 ;; (server-mode)
 
-;; golang stuff
-;; Dependencies:
-;; go get github.com/rogpeppe/godef
-;; go get golang.org/x/tools/cmd/godoc
-;; go get -u github.com/nsf/gocode
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$"
-                          ""
-                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq eshell-path-env path-from-shell) ; for eshell users
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(when window-system (set-exec-path-from-shell-PATH))
-(setenv "GOPATH" "/home/arunsrin/code/gostuff")
-(add-to-list 'exec-path "/home/arunsrin/go/bin")
 
 ;; FMT before Save , godef jump
 (defun my-go-mode-hook ()
-  ; Call Gofmt before saving                                                    
+					; Call Gofmt before saving                                                    
   (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Godef jump key binding                                                      
+					; Godef jump key binding                                                      
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
   )
@@ -308,16 +315,16 @@
 
 ;; build on M-x compile
 (defun my-go-mode-hook ()
-  ; Call Gofmt before saving
+					; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
+					; Customize compile command to run go build
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
-  ; Godef jump key binding
+					; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
-)
+  )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; elfeed and elfeed-org stuff
