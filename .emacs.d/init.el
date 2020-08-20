@@ -244,6 +244,15 @@
 (setq deft-extensions '("txt" "tex" "org" "md"))
 (setq deft-recursive t)
 (global-set-key [f8] 'deft)
+(setq deft-use-filename-as-title t)
+(setq deft-file-naming-rules
+      '((noslash . "-")
+        (nospace . "-")
+        (case-fn . downcase)))
+(global-set-key (kbd "C-x C-g") 'deft-find-file)
+(setq deft-default-extension "md")
+(setq deft-text-mode 'markdown-mode)
+
 
 ;;org-publish for notes
 (require 'ox-publish)
