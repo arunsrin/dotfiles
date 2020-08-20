@@ -84,7 +84,8 @@
 (cond 
  ((string-match "linux" system-configuration)
   (message "customizing GNU Emacs for Linux")
-  ;; anything special about Linux begins here 
+  ;; anything special about Linux begins here
+  (setq deft-directory "~/notes")
   (defvar autosave-dir "~/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "~/.emacs.d/emacs_backups/" ) (setq
                                                     backup-directory-alist
@@ -107,7 +108,8 @@
   (setenv "GOPATH" "/home/arunsrin/code/gostuff")
   (add-to-list 'exec-path "/home/arunsrin/go/bin")
   )
- ((string-match "nt" system-configuration)
+ ((string-match "mingw32" system-configuration)
+  (setq deft-directory "C:/mystuff/notes")
   (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
                                                      backup-directory-alist
@@ -239,8 +241,8 @@
 
 ;;deft for notes
 (require 'deft)
-(setq deft-extensions '("txt" "tex" "org"))
-(setq deft-directory "~/notes")
+(setq deft-extensions '("txt" "tex" "org" "md"))
+(setq deft-recursive t)
 (global-set-key [f8] 'deft)
 
 ;;org-publish for notes
