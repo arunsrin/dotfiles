@@ -107,11 +107,3 @@ endif
 autocmd BufRead,BufNewFile *.json
          \ setlocal filetype=json | syntax on | setlocal foldmethod=syntax
 
-
-" side-by-side diff
-" P.S. use like this to diff two command outputs:
-" mydiff <(cmd1) <(cmd2)
-function mydiff()
-{
-    diff --side-by-side --suppress-common-lines -W $(( $(tput cols) - 2 )) "$@"
-}
