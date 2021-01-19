@@ -96,3 +96,13 @@ else
         let g:vimwiki_list = [{'path': '~/code/arunsrin.mkdocs/home',
                               \ 'syntax': 'markdown', 'ext': '.md'}]
 endif
+
+" folding for large json files
+" Toggle fold: za
+" Open fold: zo
+" Close fold: zc
+" open all: zR
+" close all: zM
+" more at :help fold-commands
+autocmd BufRead,BufNewFile *.json
+         \ setlocal filetype=json | syntax on | setlocal foldmethod=syntax
