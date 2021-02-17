@@ -28,6 +28,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/fzf'
 Plugin 'vimwiki/vimwiki'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,3 +108,8 @@ endif
 autocmd BufRead,BufNewFile *.json
          \ setlocal filetype=json | syntax on | setlocal foldmethod=syntax
 
+
+" map : to ;
+" from https://www.twilio.com/blog/5-quality-of-life-vim-tricks-for-your-vimrc
+nnoremap <leader>; ;
+map ; :
