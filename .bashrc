@@ -32,9 +32,9 @@ export PS1="[\u@\h \W]\$ "
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
-export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
-export PATH=$PATH:$HOME/bin/
+export EDITOR="vi"
+export VISUAL="vi"
+export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 TZ='Asia/Kolkata'; export TZ
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -42,6 +42,14 @@ umask 022
 # dircolors for solarized light
 # (from https://github.com/seebi/dircolors-solarized)
 [ -f ~/.dircolors ] && eval `dircolors ~/.dircolors`
+
+# windows docker server, wsl docker client
+export DOCKER_HOST="tcp://localhost:2375"
+
+# Go Global variables
+export GOROOT=$HOME/packages/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # side-by-side diff
 # P.S. use like this to diff two command outputs:
@@ -54,4 +62,3 @@ function mydiff()
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
