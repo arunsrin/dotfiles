@@ -62,3 +62,16 @@ function mydiff()
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# launch $EDITOR with the fzf selection
+# source: https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
+fzf_find_edit() {
+    local file=$(
+      fzf --query="$1" --no-multi --select-1 --exit-0 \
+          --preview 'bat --color=always --line-range :500 {}'
+      )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}
+alias ffe='fzf_find_edit'
