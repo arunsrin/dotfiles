@@ -43,8 +43,6 @@ umask 022
 # (from https://github.com/seebi/dircolors-solarized)
 [ -f ~/.dircolors ] && eval `dircolors ~/.dircolors`
 
-# windows docker server, wsl docker client
-export DOCKER_HOST="tcp://localhost:2375"
 
 # Go Global variables
 export GOROOT=$HOME/packages/go
@@ -75,3 +73,15 @@ fzf_find_edit() {
     fi
 }
 alias ffe='fzf_find_edit'
+
+
+# Windows specific hacks
+if [ -f /etc/wsl.conf ]; then
+		# windows docker server, wsl docker client
+		export DOCKER_HOST="tcp://localhost:2375"
+fi
+
+# only on my microk8s box
+if [ -x /snap/bin/microk8s ]; then
+		alias kubectl='microk8s kubectl'
+fi
