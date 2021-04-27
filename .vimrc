@@ -1,6 +1,8 @@
 " Get vundle from here:
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " Copy this .vimrc and run :PluginInstall the very first time.
+" Also run :GoInstallBinaries once vim-go is installed
+
 set nocompatible              " required
 filetype off                  " required
 
@@ -29,6 +31,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/fzf'
 Plugin 'vimwiki/vimwiki'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -113,3 +116,6 @@ autocmd BufRead,BufNewFile *.json
 " from https://www.twilio.com/blog/5-quality-of-life-vim-tricks-for-your-vimrc
 nnoremap <leader>; ;
 map ; :
+
+" reformat and fix imports on save
+let g:go_fmt_command = "goimports"
