@@ -65,8 +65,7 @@ export NVM_DIR="$HOME/.nvm"
 # source: https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
 fzf_find_edit() {
     local file=$(
-      fzf --query="$1" --no-multi --select-1 --exit-0 \
-          --preview 'bat --color=always --line-range :500 {}'
+      fzf --query="$1" --no-multi --select-1 --exit-0
       )
     if [[ -n $file ]]; then
         $EDITOR "$file"
