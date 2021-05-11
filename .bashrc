@@ -85,3 +85,7 @@ fi
 if [ -x /snap/bin/microk8s ]; then
 		alias kubectl='microk8s kubectl'
 fi
+
+# starship, install using sh install.sh -b ~/bin
+# reference: https://starship.rs/install.sh
+eval "$(starship init bash)"
