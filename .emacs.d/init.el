@@ -105,7 +105,7 @@
       (setq exec-path (split-string path-from-shell path-separator))))
 
   (when window-system (set-exec-path-from-shell-PATH))
-  (setenv "GOPATH" "/home/arunsrin/code/gostuff")
+  (setenv "GOPATH" "/home/arunsrin/go")
   (add-to-list 'exec-path "/home/arunsrin/go/bin")
   )
  ((string-match "mingw32" system-configuration)
