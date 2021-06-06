@@ -11,4 +11,5 @@ On a new dev setup:
 - Copy files over (manually)
 - Check the `.vimrc` header for a couple of its pre-requisites
 - Start emacs, it should just auto-install everything
-- Run `./starship/install_runship.sh` to get that binary over
+- `./install/install_starship.sh` to get starship to `~/bin`
+- `./install/install_go.sh` to install go to `~/packages`
