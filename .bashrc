@@ -27,7 +27,6 @@ function    ..               { cd ..; }
 function    ,,               { cd ../..; }
 function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/null |     openssl x509 -text ; }
 # stty columns 120
-export PS1="[\u@\h \W]\$ "
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
