@@ -25,6 +25,7 @@ function    pd2              { pushd +2 $@; }
 function    pd3              { pushd +3 $@; }
 function    ..               { cd ..; }
 function    ,,               { cd ../..; }
+function    p8               { ping  8.8.8.8; }
 function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/null |     openssl x509 -text ; }
 # stty columns 120
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
