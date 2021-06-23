@@ -88,3 +88,7 @@ fi
 # starship, install using sh install.sh -b ~/bin
 # reference: https://starship.rs/install.sh
 eval "$(starship init bash)"
+
+# source fzf completions and keybindings
+source ~/.fzf/completion.bash  
+source ~/.fzf/key-bindings.bash
