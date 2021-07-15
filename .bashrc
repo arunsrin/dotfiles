@@ -12,6 +12,7 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+function    k                { kubectl $@; }
 function    p                { less $@; }
 function    et               { emacsclient $@; }
 function    e                { emacsclient -c -a emacs $@; }
