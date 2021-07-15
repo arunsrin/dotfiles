@@ -92,3 +92,8 @@ eval "$(starship init bash)"
 # source fzf completions and keybindings
 source ~/.fzf/completion.bash  
 source ~/.fzf/key-bindings.bash
+
+# krew
+if [ -d ~/.krew/bin ]; then
+  export PATH=$PATH:~/.krew/bin
+fi
