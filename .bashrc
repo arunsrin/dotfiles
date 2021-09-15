@@ -98,3 +98,15 @@ source ~/.fzf/key-bindings.bash
 if [ -d ~/.krew/bin ]; then
   export PATH=$PATH:~/.krew/bin
 fi
+
+# jump hosts
+if [ -f ~/.jump-hosts ]; then
+  source ~/.jump-hosts
+fi
+
+# kube-ps1
+if [ -f ~/.kube-ps1.sh ]; then
+  source ~/.kube-ps1.sh
+  PS1='[\u@\h \W $(kube_ps1)]\$ '
+fi
+
