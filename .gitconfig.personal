@@ -1,3 +1,5 @@
 [user]
     name = Arun S
-    email = me@arunsr.in
+    email = gnu.arun@gmail.com
+[core]
+	sshCommand = ssh -i ~/.ssh/id_rsa_personal -F /dev/null
