@@ -3,7 +3,7 @@
 
 # some useful packages
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
-  inetutils-traceroute make tree unzip
+  inetutils-traceroute make tree unzip bat
 
 # I always have a ~/bin and ~/packages
 mkdir -p ~/bin ~/packages
