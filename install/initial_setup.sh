@@ -3,7 +3,7 @@
 
 # some useful packages
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
-  inetutils-traceroute make tree
+  inetutils-traceroute make tree unzip
 
 # I always have a ~/bin and ~/packages
 mkdir -p ~/bin ~/packages
@@ -21,7 +21,7 @@ chmod +x ~/bin/helm
 rm -rf linux-amd64
 
 # k9s
-wget https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_arm64.tar.gz
+wget https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz
 tar zxvf k9s_Linux_arm64.tar.gz
 chmod +x k9s
 mv k9s ~/bin
