@@ -22,7 +22,7 @@ rm -rf linux-amd64
 
 # k9s
 wget https://github.com/derailed/k9s/releases/download/v0.24.15/k9s_Linux_x86_64.tar.gz
-tar zxvf k9s_Linux_arm64.tar.gz
+tar zxvf k9s_Linux_x86_64.tar.gz
 chmod +x k9s
 mv k9s ~/bin
 rm LICENSE README.md
