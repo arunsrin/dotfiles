@@ -116,3 +116,7 @@ if [ -f ~/.kube-ps1.sh ]; then
   source ~/.kube-ps1.sh
 fi
 
+# work related stuff
+if [ -f ~/.bashrc.work ]; then
+  source ~/.bashrc.work
+fi
