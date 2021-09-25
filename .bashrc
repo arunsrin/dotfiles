@@ -16,11 +16,11 @@ function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    et               { emacsclient $@; }
 function    e                { emacsclient -c -a emacs $@; }
-function    lr               { ls --color=auto -lrt $@; }
-function    l                { ls --color=auto $@; }
-function    sl               { ls --color=auto $@; }
-function    ls               { /bin/ls --color=auto $@; }
-function    la               { ls -Fa --color=auto $@; }
+function    lr               { exa -lr --sort=mod $@; }
+function    l                { exa $@; }
+function    sl               { exa $@; }
+function    ls               { exa $@; }
+function    la               { exa -Fa $@; }
 function    pd               { pushd $@; }
 function    pd2              { pushd +2 $@; }
 function    pd3              { pushd +3 $@; }
@@ -100,6 +100,11 @@ export PS1="[\t] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h: \`${SEL
 # source fzf completions and keybindings
 source ~/.fzf/completion.bash  
 source ~/.fzf/key-bindings.bash
+
+# exa
+if [ -f ~/.exa.bash ]; then
+  source ~/.exa.bash
+fi
 
 # krew
 if [ -d ~/.krew/bin ]; then
