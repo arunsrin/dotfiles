@@ -3,10 +3,17 @@
 
 # some useful packages
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
-  inetutils-traceroute make tree unzip bat
+  inetutils-traceroute make tree unzip bat tig gron ncdu tldr
 
 # I always have a ~/bin and ~/packages
 mkdir -p ~/bin ~/packages
+
+# exa
+cd ~/packages
+wget https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
+mv bin/exa ~/bin
+mv completions/exa.bash ~/.exa.bash
+rm -rf exa-linux-x86_64-v0.10.0.zip bin completions/ man/
 
 # kubectl
 cd ~/bin
