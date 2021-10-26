@@ -125,3 +125,6 @@ fi
 if [ -f ~/.bashrc.work ]; then
   source ~/.bashrc.work
 fi
+
+# docker buildkit
+export DOCKER_BUILDKIT=1
