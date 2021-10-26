@@ -119,3 +119,7 @@ map ; :
 
 " reformat and fix imports on save
 let g:go_fmt_command = "goimports"
+
+" ctags: reference: https://stackoverflow.com/a/741486
+" look for a `tags` file from $CWD and go upward one folder until you find one
+set tags=./tags;/
