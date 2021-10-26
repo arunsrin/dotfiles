@@ -89,12 +89,12 @@ fi
 
 # starship, install using sh install.sh -b ~/bin
 # reference: https://starship.rs/install.sh
-# eval "$(starship init bash)"
-SMILEY="✔"
-FROWNY="❌"
-GIT_SYMBOL=""
-SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
-export PS1="[\t] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h: \`${SELECT}\` \[$(tput sgr0)\]\[\033[38;5;6m\][\w] \[$(tput sgr0)\]\[\033[38;5;198m\] ${GIT_SYMBOL} (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\]\n> \[$(tput sgr0)\]"
+eval "$(starship init bash)"
+# SMILEY="✔"
+# FROWNY="❌"
+# GIT_SYMBOL=""
+# SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+# export PS1="[\t] \[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h: \`${SELECT}\` \[$(tput sgr0)\]\[\033[38;5;6m\][\w] \[$(tput sgr0)\]\[\033[38;5;198m\] ${GIT_SYMBOL} (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\]\n> \[$(tput sgr0)\]"
 
 
 # source fzf completions and keybindings
