@@ -32,6 +32,8 @@ Plugin 'junegunn/fzf'
 Plugin 'vimwiki/vimwiki'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'fatih/vim-go'
+Plugin 'andymass/vim-matchup'
+Plugin 'preservim/nerdcommenter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -122,4 +124,11 @@ let g:go_fmt_command = "goimports"
 
 " ctags: reference: https://stackoverflow.com/a/741486
 " look for a `tags` file from $CWD and go upward one folder until you find one
-set tags=./tags;/
+set tags=./tags;$HOME
+
+" Bind NerdTree pane to Ctrl+o
+map <C-o> :NERDTreeToggle<CR>
+
+" nerdcommenter:
+" \cc: comment: simple
+" \cu: uncomment
