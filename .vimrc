@@ -6,8 +6,15 @@
 set nocompatible              " required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+if ($OS == 'Windows_NT')
+        set shellslash
+        set rtp+=~/vimfiles/bundle/Vundle.vim
+else
+        set rtp+=~/.vim/bundle/Vundle.vim
+endif
+
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -93,7 +100,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
 " OS Specific settings
 if ($OS == 'Windows_NT')
-		colorscheme solarized
+        set background=dark
+		"colorscheme solarized
         "vimwiki settings
         let g:vimwiki_list = [{'path': '~\OneDrive\Documents\GitHub\arunsrin.mkdocs\home',
                               \ 'syntax': 'markdown', 'ext': '.md'}]
