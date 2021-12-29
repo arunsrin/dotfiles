@@ -31,6 +31,9 @@ function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/n
 function    cat              {  batcat $@; }
 # stty columns 120
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
+# Use ipydb as default python debugger
+export PYTHONBREAKPOINT=ipdb.set_trace()
+
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
