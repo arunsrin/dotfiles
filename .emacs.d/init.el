@@ -25,6 +25,7 @@
     sml-mode
     auto-complete
     anaconda-mode
+    markdown-mode
     persistent-scratch
     python-mode
     flycheck
@@ -69,7 +70,7 @@
 
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
-(global-linum-mode t) ;; enable line numbers globally
+; (global-linum-mode t) ;; enable line numbers globally
 
 ;;Turn off crappy scrollbar and toolbar
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode 1))
