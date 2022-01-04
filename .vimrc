@@ -6,7 +6,6 @@
 set nocompatible              " required
 filetype off                  " required
 
-
 " set the runtime path to include Vundle and initialize
 if ($OS == 'Windows_NT')
         set shellslash
@@ -41,6 +40,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'fatih/vim-go'
 Plugin 'andymass/vim-matchup'
 Plugin 'preservim/nerdcommenter'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,6 +66,9 @@ autocmd BufNewFile,BufReadPost *.page set filetype=markdown
 set nofoldenable    " disable folding
 
 " python settings
+let g:pymode_options = 1 " default pymode settings
+let g:pymode_rope_refix = '<C-c>'
+let g:pymode_rope_refix = '<C-c>'
 au BufRead,BufNewFile *.py,*.pyw set tabstop=4
 au BufRead,BufNewFile *.py,*.pyw set softtabstop=4
 au BufRead,BufNewFile *.py,*.pyw set shiftwidth=4
@@ -75,6 +79,7 @@ au BufRead,BufNewFile *.py,*.pyw set autoindent
 " au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au         BufNewFile *.py,*.pyw set fileformat=unix
 au BufRead,BufNewFile *.py,*.pyw let b:comment_leader = '#'
+au BufWritePre *.py execute ':Black'
 
 " General settings
 set tabstop=4       	" number of visual spaces per TAB
@@ -109,6 +114,8 @@ else
         "vimwiki settings
         let g:vimwiki_list = [{'path': '~/code/arunsrin.mkdocs/home',
                               \ 'syntax': 'markdown', 'ext': '.md'}]
+        " use exuberant-ctags instead of emacs' ctags
+        let g:gutentags_ctags_executable='/usr/bin/ctags'
 endif
 
 " folding for large json files
