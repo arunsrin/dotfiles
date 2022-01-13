@@ -14,8 +14,8 @@ fi
 # User specific aliases and functions
 function    k                { kubectl $@; }
 function    p                { batcat $@; }
-function    et               { emacsclient $@; }
-function    e                { emacsclient -c -a emacs $@; }
+function    et               { emacs $@; }
+function    e                { emacs $@; }
 function    lr               { exa -lr --sort=mod $@; }
 function    l                { exa $@; }
 function    sl               { exa $@; }
@@ -75,12 +75,6 @@ fzf_find_edit() {
 }
 alias ffe='fzf_find_edit'
 
-
-# Windows specific hacks
-if [ -f /etc/wsl.conf ]; then
-		# windows docker server, wsl docker client
-		export DOCKER_HOST="tcp://localhost:2375"
-fi
 
 # only on my microk8s box
 if [ -x /snap/bin/microk8s ]; then
