@@ -27,7 +27,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-markdown'
 Plugin 'klen/python-mode'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-startify'
 Plugin 'bling/vim-airline'
@@ -42,6 +42,8 @@ Plugin 'andymass/vim-matchup'
 Plugin 'preservim/nerdcommenter'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'psf/black'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'neovim/nvim-lspconfig'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,8 +68,6 @@ autocmd BufNewFile,BufReadPost *.page set filetype=markdown
 set nofoldenable    " disable folding
 
 " python settings
-let g:python3_host_prog = '~/venvs/misc/bin/python3' "neovim
-let g:loaded_python_provider = 0 "disable python2
 let g:pymode_options = 1 " default pymode settings
 let g:pymode_rope_refix = '<C-c>'
 let g:pymode_rope_refix = '<C-c>'
@@ -153,7 +153,12 @@ map <C-o> :NERDTreeToggle<CR>
 set termguicolors
 
 if has('nvim')
-    " Neovim specific commands
+        " Neovim specific commands
+        let g:python3_host_prog = '~/venvs/misc/bin/python3' "neovim
+        let g:loaded_python_provider = 0 "disable python2
+        lua << EOF
+require'lspconfig'.pylsp.setup{}
+EOF
 else
-    " Standard vim specific commands
+        " Standard vim specific commands
 endif
