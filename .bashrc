@@ -12,10 +12,12 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+function    vi               { ${EDITOR} $@; }
 function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    et               { emacs $@; }
 function    e                { emacs $@; }
+function    ls               { ls --color $@; }
 function    lr               { ls --color -lrt $@; }
 function    l                { ls --color $@; }
 function    sl               { ls --color $@; }
@@ -33,7 +35,8 @@ function    cat              {  batcat $@; }
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="vi"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export VISUAL="vi"
 export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 TZ='Asia/Kolkata'; export TZ

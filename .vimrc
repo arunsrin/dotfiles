@@ -66,6 +66,8 @@ autocmd BufNewFile,BufReadPost *.page set filetype=markdown
 set nofoldenable    " disable folding
 
 " python settings
+let g:python3_host_prog = '~/venvs/misc/bin/python3' "neovim
+let g:loaded_python_provider = 0 "disable python2
 let g:pymode_options = 1 " default pymode settings
 let g:pymode_rope_refix = '<C-c>'
 let g:pymode_rope_refix = '<C-c>'
@@ -93,7 +95,7 @@ syntax on
 set background=light
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set ignorecase
-set paste
+" set paste
 set nohlsearch
 set incsearch
 nmap <F3> a<C-R>=strftime("%A %Y%m%d")<CR><Esc>
@@ -147,3 +149,11 @@ map <C-o> :NERDTreeToggle<CR>
 " nerdcommenter:
 " \cc: comment: simple
 " \cu: uncomment
+
+set termguicolors
+
+if has('nvim')
+    " Neovim specific commands
+else
+    " Standard vim specific commands
+endif
