@@ -17,7 +17,6 @@ function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    et               { emacs $@; }
 function    e                { emacs $@; }
-function    ls               { ls --color $@; }
 function    lr               { ls --color -lrt $@; }
 function    l                { ls --color $@; }
 function    sl               { ls --color $@; }
