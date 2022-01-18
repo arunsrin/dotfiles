@@ -16,11 +16,10 @@ function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    et               { emacs $@; }
 function    e                { emacs $@; }
-function    lr               { exa -lr --sort=mod $@; }
-function    l                { exa $@; }
-function    sl               { exa $@; }
-function    ls               { exa $@; }
-function    la               { exa -Fa $@; }
+function    lr               { ls --color -lrt $@; }
+function    l                { ls --color $@; }
+function    sl               { ls --color $@; }
+function    la               { ls --color -a $@; }
 function    pd               { pushd $@; }
 function    pd2              { pushd +2 $@; }
 function    pd3              { pushd +3 $@; }

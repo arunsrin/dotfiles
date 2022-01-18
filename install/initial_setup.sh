@@ -1,20 +1,20 @@
 # Good luck running this all in one go. This is just a reference from a new WSL
 # instance and may or may not work in all environments.
 
+
+# install software-properties-common..
+sudo apt update && sudo apt install software-properties-common
+# ..so we can add the neovim repo
+sudo add-apt-repository ppa:neovim-ppa/stable
+
 # some useful packages
+sudo apt update
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
-  inetutils-traceroute make tree unzip bat tig gron ncdu tldr
+  inetutils-traceroute make tree unzip bat tig gron ncdu tldr \
+  neovim python3-dev python3-pip
 
 # I always have a ~/bin and ~/packages
 mkdir -p ~/bin ~/packages
-
-# exa
-cd ~/packages
-wget https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
-unzip exa-linux-x86_64-v0.10.0.zip
-mv bin/exa ~/bin
-mv completions/exa.bash ~/.exa.bash
-rm -rf exa-linux-x86_64-v0.10.0.zip bin completions/ man/
 
 # kubectl
 cd ~/bin
