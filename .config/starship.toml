@@ -1,91 +1,83 @@
-# Reference:
-# https://raw.githubusercontent.com/The-Kid-Gid/dotfiles/master/starship.toml
+format = """
+$username\
+$hostname\
+$kubernetes\
+$battery\
+$git_branch\
+$git_status\
+$time\
+$python\
+$status\
+$line_break\
+$directory\
+$character"""
+
 add_newline = false
+scan_timeout = 100
+command_timeout = 100
 
 [aws]
-symbol = " "
 disabled = true
 
 [battery]
-full_symbol = ""
-charging_symbol = ""
-discharging_symbol = ""
+disabled = false
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
 
-[conda]
-symbol = " "
+[[battery.display]]
+threshold = 50
+style = "bold red"
 
-[custom]
-
-[custom.tab]
-description = "The current tab in the tab terminal multiplexer"
-command = "tab --starship"
-when = "tab --starship"
-shell = ["sh"]
-format = "[$output]($style) "
-style = "bold blue"
-
-[dart]
-symbol = " "
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
 
 [directory]
-read_only = " "
+read_only = " 🔒"
 
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[git_branch]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[line_break]
+[gcloud]
 disabled = true
 
-[memory_usage]
-symbol = " "
+[git_branch]
+style = "bold blue"
+format = "[$symbol$branch]($style)"
+truncation_length = 30
 
-[nim]
-symbol = " "
+[git_status]
+format = '([ $all_status$ahead_behind]($style) )'
+style = "bold white"
+ahead =	"⏫ ${count} "
+behind = "⏬ ${count} "
+conflicted = "🔥 "
+untracked = "🔎 ${count} "
+modified = "🖍 ${count} "
+renamed = "⏩ ${count} "
+staged = "✅ ${count} "
+stashed = "💰 "
+deleted = "🗑️ ${count} "
 
-[nix_shell]
-symbol = " "
+[kubernetes]
+format = 'on [⛵ $context \($namespace\)](dimmed green) '
+disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+".*/openshift-cluster/.*" = "openshift"
+"gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
 
 [package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
+disabled = true
 
 [python]
-symbol = " "
+format = '[${symbol}(${version} )(\($virtualenv\))]($style) '
 
-[ruby]
-symbol = " "
+[status]
+disabled = false
 
-[rust]
-symbol = " "
+[time]
+disabled = false
+format = ' ⏰[ $time]($style) '
+time_format = "%T"
+style = 'white'
 
-[scala]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
