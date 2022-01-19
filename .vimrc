@@ -156,9 +156,6 @@ if has('nvim')
         " Neovim specific commands
         let g:python3_host_prog = '~/venvs/misc/bin/python3' "neovim
         let g:loaded_python_provider = 0 "disable python2
-        lua << EOF
-require'lspconfig'.pylsp.setup{}
-EOF
 else
         " Standard vim specific commands
 endif
