@@ -1,7 +1,7 @@
 set -x
 set -e
 
-GO_VERSION="1.16.5"
+GO_VERSION="1.17.6"
 
 # I like to keep things in ~/packages
 mkdir -p ~/packages
