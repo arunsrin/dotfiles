@@ -15,10 +15,10 @@ fi
 sudo apt update
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
   inetutils-traceroute make tree unzip bat tig gron ncdu tldr \
-  neovim python3-dev python3-pip
+  neovim python3-dev python3-pip libxml2-dev xonsh
 
 # I always have a ~/bin and ~/packages
-mkdir -p ~/bin ~/packages
+mkdir -p ~/{bin,code,go,packages,scrap,venvs,work}
 
 # kubectl
 if [ ! -f ~/bin/k9s ]; then
@@ -83,7 +83,6 @@ fi
 
 # My catch-all virtualenv
 if [ ! -d ~/venvs/misc ]; then
-  mkdir -p ~/venvs
   python3 -m venv ~/venvs/misc
 fi
 source ~/venvs/misc/bin/activate

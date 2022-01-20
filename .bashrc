@@ -15,8 +15,7 @@ fi
 function    vi               { ${EDITOR} $@; }
 function    k                { kubectl $@; }
 function    p                { batcat $@; }
-function    et               { emacs $@; }
-function    e                { emacs $@; }
+function    e                { emacs -nw $@; }
 function    lr               { ls --color -lrt $@; }
 function    l                { ls --color $@; }
 function    sl               { ls --color $@; }
