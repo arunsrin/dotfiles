@@ -12,7 +12,7 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-function    vi               { ${EDITOR} $@; }
+function    vi               { nvim $@; }
 function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    e                { emacs -nw $@; }

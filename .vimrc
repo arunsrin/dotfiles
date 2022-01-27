@@ -81,7 +81,7 @@ au BufRead,BufNewFile *.py,*.pyw set autoindent
 " au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au         BufNewFile *.py,*.pyw set fileformat=unix
 au BufRead,BufNewFile *.py,*.pyw let b:comment_leader = '#'
-au BufWritePre *.py execute ':Black'
+" au BufWritePre *.py execute ':Black'
 
 " General settings
 set tabstop=4       	" number of visual spaces per TAB
