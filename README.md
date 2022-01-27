@@ -9,23 +9,19 @@ Here are my dotfiles for vim, bash, emacs and a few others.
 - `~/code` for personal git repos
 - `~/work` for work git repos
 
-## Getting things ready
-
-```sh
-sudo apt update
-sudo apt upgrade -y
-sudo apt install fzf build-essential // more here that I can't remember right now
-```
-
 ## Setup
 
-On a new dev setup:
+```sh
+cd install
+./initial_setup.sh
+```
 
-- Clone this repo. 
-	- I like to keep stuff like this in `~/code` and work stuff in `~/work` so
-	that my git commits use my personal and work emails respectively (See
-	`.gitconfig` and `.gitconfig.personal` for how that bit works)
-- Copy files over (manually)
+- The above script will install some key packages, copy binaries like kubectl
+  that don't have apt packages, and sets up some directories the way I like it
+- I like to keep stuff like this in `~/code` and work stuff in `~/work` so that
+  my git commits use my personal and work emails respectively (See `.gitconfig`
+  and `.gitconfig.personal` for how that bit works)
+- *Copy the actual dotfiles over manually for now*
 - Check the `.vimrc` header for a couple of its pre-requisites
 - Start emacs, it should just auto-install everything
 - `./install/install_starship.sh` to get starship to `~/bin`
