@@ -43,7 +43,6 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'psf/black'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'neovim/nvim-lspconfig'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -152,10 +151,3 @@ map <C-o> :NERDTreeToggle<CR>
 
 set termguicolors
 
-if has('nvim')
-        " Neovim specific commands
-        let g:python3_host_prog = '~/venvs/misc/bin/python3' "neovim
-        let g:loaded_python_provider = 0 "disable python2
-else
-        " Standard vim specific commands
-endif

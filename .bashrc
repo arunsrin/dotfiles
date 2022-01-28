@@ -12,7 +12,7 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-function    vi               { nvim $@; }
+# function    vi               { nvim $@; }
 function    k                { kubectl $@; }
 function    p                { batcat $@; }
 function    e                { emacs -nw $@; }
@@ -33,8 +33,8 @@ function    cat              {  batcat $@; }
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
 export VISUAL="vi"
 export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
 TZ='Asia/Kolkata'; export TZ
