@@ -14,7 +14,7 @@ fi
 # User specific aliases and functions
 # function    vi               { nvim $@; }
 function    k                { kubectl $@; }
-function    p                { batcat $@; }
+function    p                { less $@; }
 function    e                { emacs -nw $@; }
 function    lr               { ls --color -lrt $@; }
 function    l                { ls --color $@; }
@@ -27,7 +27,6 @@ function    ..               { cd ..; }
 function    ,,               { cd ../..; }
 function    p8               { ping  8.8.8.8; }
 function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/null |     openssl x509 -text ; }
-function    cat              {  batcat $@; }
 # stty columns 120
 # export PYTHONSTARTUP=$HOME/.pythonrc.py
 export LC_ALL="en_US.UTF-8"
@@ -122,3 +121,4 @@ fi
 
 # docker buildkit
 export DOCKER_BUILDKIT=1
+source ~/venvs/misc/bin/activate

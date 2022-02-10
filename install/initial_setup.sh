@@ -86,5 +86,5 @@ if [ ! -d ~/venvs/misc ]; then
   python3 -m venv ~/venvs/misc
 fi
 source ~/venvs/misc/bin/activate
-pip install -r requirements.txt
+~/venvs/misc/bin/pip install -r requirements.txt
 deactivate

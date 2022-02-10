@@ -1,7 +1,6 @@
 format = """
 $username\
 $hostname\
-$kubernetes\
 $battery\
 $git_branch\
 $git_status\
@@ -41,13 +40,13 @@ read_only = " 🔒"
 disabled = true
 
 [git_branch]
-style = "bold blue"
+style = "dimmed cyan"
 format = "[$symbol$branch]($style)"
 truncation_length = 30
 
 [git_status]
 format = '([ $all_status$ahead_behind]($style) )'
-style = "bold white"
+style = "bold black"
 ahead =	"⏫ ${count} "
 behind = "⏬ ${count} "
 conflicted = "🔥 "
@@ -71,6 +70,7 @@ disabled = true
 
 [python]
 format = '[${symbol}(${version} )(\($virtualenv\))]($style) '
+style = 'italic cyan'
 
 [status]
 disabled = false
@@ -79,5 +79,5 @@ disabled = false
 disabled = false
 format = ' ⏰[ $time]($style) '
 time_format = "%T"
-style = 'white'
+style = 'dimmed purple'
 
