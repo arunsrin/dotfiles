@@ -74,6 +74,14 @@ fzf_find_edit() {
 }
 alias ffe='fzf_find_edit'
 
+# cdf - cd into the directory of the file selected via fzf
+# from here https://github.com/junegunn/fzf/wiki/examples
+cdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
 
 # only on my microk8s box
 if [ -x /snap/bin/microk8s ]; then
