@@ -5,10 +5,11 @@
 sudo apt update
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
   inetutils-traceroute make tree unzip bat tig gron ncdu tldr \
-  python3-dev python3-pip libxml2-dev xonsh libssl-dev
+  python3-dev python3-pip libxml2-dev xonsh libssl-dev libzmq3-dev \
+  libsqlite3-dev
 
 # Setup my folder structure
-mkdir -p ~/{bin,code,go,packages,scrap,venvs,work}
+mkdir -p ~/{bin,code,data,go,packages,scrap,venvs,work}
 
 # install and setup asdf
 if [ ! -d ~/.asdf ]; then
@@ -24,6 +25,9 @@ do
   asdf install $package latest
   asdf global $package latest
 done
+# install anaconda for data folder
+asdf install python anaconda3-2022.05
+cd data && asdf local python anaconda3-2022.05 && cd -
 
 # krew plugins
 kubectl krew install ctx ns tail tree
