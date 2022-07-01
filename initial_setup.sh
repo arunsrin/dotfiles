@@ -17,15 +17,17 @@ if [ ! -d ~/.asdf ]; then
   . $HOME/.asdf/asdf.sh
 fi
 
-# install the rest using asdf
-for package in python golang kubectl helm krew github-cli starship hey k9s
+# install the rest using asdf. not sure if this works well repeatably. use with
+# caution.
+for package in python golang kubectl helm krew github-cli starship hey k9s vim
 do
   echo -e "\nInstalling $package using asdf..\n"
   asdf plugin add $package
   asdf install $package latest
   asdf global $package latest
 done
-# install anaconda for data folder
+
+# install anaconda locally for the data folder
 asdf install python anaconda3-2022.05
 cd data && asdf local python anaconda3-2022.05 && cd -
 
