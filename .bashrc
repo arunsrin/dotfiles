@@ -12,7 +12,7 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-# function    vi               { nvim $@; }
+function    vi               { vim $@; }
 function    k                { kubectl $@; }
 function    p                { less $@; }
 function    e                { emacs -nw $@; }
@@ -32,10 +32,10 @@ function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/n
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="/usr/bin/vim"
-export VISUAL="/usr/bin/vim"
-export VISUAL="vi"
-export PATH=$PATH:$HOME/bin/:$HOME/.local/bin
+export EDITOR="vim"
+export VISUAL="vim"
+export VISUAL="vim"
+export PATH=$HOME/bin/:$PATH:$HOME/bin/:$HOME/.local/bin
 TZ='Asia/Kolkata'; export TZ
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
