@@ -27,10 +27,6 @@ do
   asdf global $package latest
 done
 
-# install anaconda locally for the data folder
-asdf install python anaconda3-2022.05
-cd data && asdf local python anaconda3-2022.05 && cd -
-
 # krew plugins
 kubectl krew install ctx ns tail tree
 
