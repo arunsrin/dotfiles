@@ -19,7 +19,7 @@ fi
 
 # install the rest using asdf. not sure if this works well repeatably. use with
 # caution.
-for package in python golang kubectl helm krew github-cli starship hey k9s vim
+for package in python golang kubectl helm krew github-cli starship hey k9s vim nodejs
 do
   echo -e "\nInstalling $package using asdf..\n"
   asdf plugin add $package

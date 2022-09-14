@@ -127,8 +127,8 @@ if [ -f ~/.bashrc.work ]; then
   source ~/.bashrc.work
 fi
 
-# docker buildkit
-export DOCKER_BUILDKIT=1
+# disable docker buildkit
+export DOCKER_BUILDKIT=0
 source ~/venvs/misc/bin/activate
 
 # Source asdf if it exists
