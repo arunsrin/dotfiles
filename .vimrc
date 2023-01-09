@@ -23,7 +23,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
+" Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-markdown'
 Plugin 'klen/python-mode'
@@ -151,3 +151,4 @@ map <C-o> :NERDTreeToggle<CR>
 
 set termguicolors
 
+colorscheme darkblue
