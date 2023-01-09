@@ -1,0 +1,12 @@
+python 3.11.0
+kubectl 1.23.6
+helm 3.8.2
+krew 0.4.3
+golang 1.18.1
+github-cli 2.9.0
+starship 1.12.0
+k9s 0.26.7
+vim 9.0.0014
+terraform 1.2.5
+nodejs 18.7.0
+hey 0.1.4

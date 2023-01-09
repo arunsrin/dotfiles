@@ -17,15 +17,13 @@ if [ ! -d ~/.asdf ]; then
   . $HOME/.asdf/asdf.sh
 fi
 
-# install the rest using asdf. not sure if this works well repeatably. use with
-# caution.
-for package in python golang kubectl helm krew github-cli starship hey k9s vim nodejs
-do
-  echo -e "\nInstalling $package using asdf..\n"
-  asdf plugin add $package
-  asdf install $package latest
-  asdf global $package latest
-done
+# install the rest using asdf.
+echo -e "\n Setting up packages using asdf"
+cp .tool-versions ~/
+asdf install
+while read line; do
+  asdf global $line
+done <~/.tool-versions
 
 # krew plugins
 kubectl krew install ctx ns tail tree
