@@ -17,18 +17,19 @@
 
 (defvar myPackages
   '(better-defaults
-    elfeed
-    elfeed-org
-    elfeed-goodies
+    ;; elfeed
+    ;; elfeed-org
+    ;; elfeed-goodies
     ein ;; (emacs ipython notebook)
-    epc
-    sml-mode
+    ;; epc
+    ;; sml-mode
     auto-complete
     anaconda-mode
     markdown-mode
     persistent-scratch
     python-mode
     flycheck
+    blacken
     paredit
     geiser
     ;; color-theme
@@ -38,7 +39,7 @@
     htmlize
     magit
     fzf
-    deft
+    ;; deft
     which-key
     helpful
     ;; color-theme-solarized
@@ -86,7 +87,7 @@
  ((string-match "linux" system-configuration)
   (message "customizing GNU Emacs for Linux")
   ;; anything special about Linux begins here
-  (setq deft-directory "~/notes")
+  ;; (setq deft-directory "~/notes")
   (defvar autosave-dir "~/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "~/.emacs.d/emacs_backups/" ) (setq
                                                     backup-directory-alist
@@ -110,14 +111,14 @@
   (add-to-list 'exec-path "/home/arunsrin/go/bin")
   )
  ((string-match "mingw32" system-configuration)
-  (setq deft-directory "C:/mystuff/notes")
+  ;; (setq deft-directory "C:/mystuff/notes")
   (defvar autosave-dir "C:/.emacs.d/emacs_autosaves/")
   (defvar backup-dir "C:/.emacs.d/emacs_backups/" ) (setq 
                                                      backup-directory-alist
                                                      (list (cons "." backup-dir)))
 
-  (setenv "PATH" (concat "C:/Program Files (x86)/SMLNJ/bin:" (getenv "PATH")))
-  (setq exec-path (cons "C:/Program Files (x86)/SMLNJ/bin" exec-path))
+  ;; (setenv "PATH" (concat "C:/Program Files (x86)/SMLNJ/bin:" (getenv "PATH")))
+  ;; (setq exec-path (cons "C:/Program Files (x86)/SMLNJ/bin" exec-path))
   )
 
  ((string-match "mingw" system-configuration)
@@ -195,9 +196,21 @@
 (global-set-key (kbd "M-0") 'delete-window) 
 (global-set-key (kbd "M-o") 'other-window) 
 
+;; quality of life improvements
 (require 'elscreen)
-(require 'smooth-scrolling)
+(smooth-scrolling-mode t)
+(require 'better-defaults)
+(which-key-mode t)
 
+;; helpful keybinding overrides
+(global-set-key (kbd "C-h f") #'helpful-callable)
+
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-h x") #'helpful-command)
+;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; for this in lisp modes.
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
 
 ;; Replace "no or yes" with y or n
 (defun yes-or-no-p (arg)
@@ -206,8 +219,6 @@
 
 ;; enable autopep8 on save
 (require 'py-autopep8)
-;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -226,11 +237,9 @@
  ;; If there is more than one, they won't work right.
  '(display-time-mode t)
  '(package-selected-packages
-   (quote
-    (go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck epc elscreen ein deft better-defaults auto-complete anaconda-mode)))
+   '(go-autocomplete markdown-mode persistent-scratch smooth-scrolling python-mode py-autopep8 material-theme htmlize flycheck elscreen ein better-defaults auto-complete anaconda-mode))
  '(safe-local-variable-values
-   (quote
-    ((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />"))))
+   '((org-export-html-style . "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" />")))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -241,18 +250,18 @@
  '(default ((t (:family "Hack" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
 ;;deft for notes
-(require 'deft)
-(setq deft-extensions '("txt" "tex" "org" "md"))
-(setq deft-recursive t)
-(global-set-key [f8] 'deft)
-(setq deft-use-filename-as-title t)
-(setq deft-file-naming-rules
-      '((noslash . "-")
-        (nospace . "-")
-        (case-fn . downcase)))
-(global-set-key (kbd "C-x C-g") 'deft-find-file)
-(setq deft-default-extension "md")
-(setq deft-text-mode 'markdown-mode)
+;; (require 'deft)
+;; (setq deft-extensions '("txt" "tex" "org" "md"))
+;; (setq deft-recursive t)
+;; (global-set-key [f8] 'deft)
+;; (setq deft-use-filename-as-title t)
+;; (setq deft-file-naming-rules
+;;       '((noslash . "-")
+;;         (nospace . "-")
+;;         (case-fn . downcase)))
+;; (global-set-key (kbd "C-x C-g") 'deft-find-file)
+;; (setq deft-default-extension "md")
+;; (setq deft-text-mode 'markdown-mode)
 
 
 ;;org-publish for notes
@@ -341,15 +350,15 @@
 
 ;; elfeed and elfeed-org stuff
 ;; Load elfeed-org
-(require 'elfeed-org)
+;; (require 'elfeed-org)
 
 ;; Initialize elfeed-org
 ;; This hooks up elfeed-org to read the configuration when elfeed
 ;; is started with =M-x elfeed=
-(elfeed-org)
+;; (elfeed-org)
 
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
-(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
+;; (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org"))
 
