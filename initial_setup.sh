@@ -20,6 +20,10 @@ fi
 # install the rest using asdf.
 echo -e "\n Setting up packages using asdf"
 cp .tool-versions ~/
+# first add the plugins
+# ref https://dev.to/deepanchal/setup-asdf-direnv-5afo
+cat ~/.tool-versions | awk ' {print $1}' | xargs -I _ asdf plugin add _
+# and then install them
 asdf install
 while read line; do
   asdf global $line
