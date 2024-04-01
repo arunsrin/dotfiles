@@ -24,3 +24,23 @@ This script can be run repeatedly and is fairly simple. It:
 The only manual steps currently are mentioned in the `.vimrc` header, for
 vundle setup.
 
+## Notes to self
+
+Periodically run this to update asdf's `.tool-versions` to their latest
+equivalents:
+
+```sh
+# this shows latest available versions for installed tools:
+asdf latest --all
+# edit the .tool-versions file with the ones you want to update to, and run this:
+asdf update
+```
+
+Similarly for python, just run this every once in a while:
+
+```sh
+pip-review --auto
+```
+
+This will update all installed packages. Freeze and commit the
+`requirements.txt`.
