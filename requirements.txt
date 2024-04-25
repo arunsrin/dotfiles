@@ -15,7 +15,6 @@ Pygments==2.15.1
 pyOpenSSL==23.3.0
 python-jenkins==1.7.0
 pytz==2024.1
-PyYAML==5.4.1
 requests==2.31.0
 resolvelib==1.0.1
 rsa==4.7.2

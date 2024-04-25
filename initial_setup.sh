@@ -3,10 +3,13 @@
 
 # some useful packages, always run this
 sudo apt update
-sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
+sudo apt install emacs-nox git fzf jq python3 python-is-python3 virtualenv \
   inetutils-traceroute make tree unzip bat tig gron ncdu tldr \
   python3-dev python3-pip libxml2-dev xonsh libssl-dev libzmq3-dev \
-  libsqlite3-dev
+  libsqlite3-dev python3.10-venv exuberant-ctags
+
+# locale configuration
+sudo locale-gen en_US.UTF-8
 
 # Setup my folder structure
 mkdir -p ~/{bin,code,data,go,packages,scrap,venvs,work}
