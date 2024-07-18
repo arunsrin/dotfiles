@@ -35,7 +35,7 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR="vim"
 export VISUAL="vim"
 export VISUAL="vim"
-export PATH=$HOME/bin/:$PATH:$HOME/bin/:$HOME/.local/bin
+export PATH=$HOME/bin/:$PATH:$HOME/bin/:$HOME/.local/bin:$HOME/.asdf/shims
 TZ='Asia/Kolkata'; export TZ
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
