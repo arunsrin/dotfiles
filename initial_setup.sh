@@ -6,7 +6,9 @@ sudo apt update
 sudo apt install emacs-nox git fzf ctags jq python3 python-is-python3 virtualenv \
   inetutils-traceroute make tree unzip bat tig gron ncdu tldr \
   python3-dev python3-pip libxml2-dev xonsh libssl-dev libzmq3-dev \
-  libsqlite3-dev
+  libsqlite3-dev build-essential libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev curl git \
+  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 # Setup my folder structure
 mkdir -p ~/{bin,code,data,go,packages,scrap,venvs,work}
@@ -39,6 +41,16 @@ if [ ! -d ~/venvs/misc ]; then
   ~/venvs/misc/bin/pip install -r requirements.txt
   deactivate
 fi
+
+# pyenv: https://github.com/pyenv/pyenv
+curl https://pyenv.run | bash
+# usage:
+# pyenv update -> update package lists
+# pyenv install -l -> list available pythons
+# pyenv install 3.12.4 ->download compile and install
+# pyenv global 3.12.4 ->use this version for this user
+# pyenv shell <version> ->just for current shell session
+# pyenv local <version> ->for current dir and subdirs
 
 # copy all the dotfiles over
 for i in .bashrc bin .config .ctags .dircolors .emacs.d .fzf .gitconfig .gitconfig.personal initial_setup.sh .kube-ps1.sh .pythonrc.py .screenrc .tmux.conf .vimrc
