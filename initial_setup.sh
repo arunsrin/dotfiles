@@ -38,6 +38,13 @@ done <~/.tool-versions
 # krew plugins
 kubectl krew install ctx ns tail tree
 
+# go
+wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
+
+# glow markdown reader
+go install github.com/charmbracelet/glow@latest
+
 # My catch-all virtualenv
 if [ ! -d ~/venvs/misc ]; then
   python3 -m venv ~/venvs/misc
