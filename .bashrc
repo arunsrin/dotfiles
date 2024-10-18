@@ -46,7 +46,7 @@ umask 022
 
 
 # Go Global variables
-export GOROOT=~/.asdf/installs/golang/1.22.1/go/
+export GOROOT=~/.asdf/installs/golang/1.23.2/go/
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
