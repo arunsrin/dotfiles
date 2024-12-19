@@ -2,7 +2,7 @@
 # instance and may or may not work in all environments.
 
 # some useful packages, always run this
-sudo dnf install fzf \
+sudo dnf install fzf vim \
   bat tig gron ncdu tldr \
   python3-devel \
   @development-tools gcc gdb g++
