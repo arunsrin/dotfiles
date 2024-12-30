@@ -15,8 +15,8 @@ services:
       CHROMA_HTTP_HOST: chromadb
       CHROMA_TENANT: default_tenant
       VECTOR_DB: chroma
-      WEBUI_NAME: Awesome ChatBot
-      CORS_ALLOW_ORIGIN: "*" # This is the current Default, will need to change before going live
+      WEBUI_NAME: Arun's ChatBot
+      CORS_ALLOW_ORIGIN: "https://*.arunsr.in"
       RAG_EMBEDDING_ENGINE: ollama
       RAG_EMBEDDING_MODEL: nomic-embed-text-v1.5
       RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE: "True"
