@@ -13,6 +13,12 @@ sudo locale-gen en_US.UTF-8
 # Setup my folder structure
 mkdir -p ~/{bin,code,data,go,packages,scrap,venvs,work}
 
+# install uv to manage python
+export MY_PYTHON_VERSION=3.13.2
+curl -LsSf https://astral.sh/uv/install.sh | sh
+~/.local/bin/uv python install cpython-${MY_PYTHON_VERSION}-linux-x86_64-gnu
+~/.local/bin/uv venv ~/venvs/misc --python ${MY_PYTHON_VERSION}
+
 # install and setup asdf
 if [ ! -d ~/.asdf ]; then
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
@@ -43,7 +49,7 @@ go install github.com/charmbracelet/glow@latest
 
 # My catch-all virtualenv
 if [ ! -d ~/venvs/misc ]; then
-  python3 -m venv ~/venvs/misc
+  ~/.local/bin/uv venv ~/venvs/misc --python ${MY_PYTHON_VERSION}
   source ~/venvs/misc/bin/activate
   ~/venvs/misc/bin/pip install -r requirements.txt
   deactivate
