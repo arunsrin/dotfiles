@@ -29,7 +29,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'klen/python-mode'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'mhinz/vim-startify'
+" Plugin 'mhinz/vim-startify'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
@@ -43,6 +43,7 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'psf/black'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'github/copilot.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -99,7 +100,7 @@ set nohlsearch
 set incsearch
 nmap <F3> a<C-R>=strftime("%A %Y%m%d")<CR><Esc>
 imap <F3> <C-R>=strftime("%A %Y%m%d")<CR>
-:set pastetoggle=<f5>
+" :set pastetoggle=<f5>
 set laststatus=2 "airline needs this
 let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
