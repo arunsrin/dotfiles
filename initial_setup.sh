@@ -24,9 +24,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ~/.local/bin/uv venv ~/venvs/misc --python ${MY_PYTHON_VERSION}
 
 # install and setup asdf
-if [ ! -d ~/.asdf ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
-  . $HOME/.asdf/asdf.sh
+if [ ! -f ~/bin/asdf ]; then
+  # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.16.0
+  cd ~/packages
+  curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-arm64.tar.gz
+  tar zxvf asdf-v0.16.7-linux-arm64.tar.gz
+  chmod +x asdf
+  mv asdf ~/bin
 fi
 
 # install the rest using asdf.
@@ -38,14 +42,15 @@ cat ~/.tool-versions | awk ' {print $1}' | xargs -I _ asdf plugin add _
 # and then install them
 asdf install
 while read line; do
-  asdf global $line
+  asdf set $line
 done <~/.tool-versions
+asdf reshim
 
 # krew plugins
 kubectl krew install ctx ns tail tree
 
 # go
-wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
+curl -LO https://go.dev/dl/go1.23.0.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
 
 # glow markdown reader
@@ -68,6 +73,11 @@ curl https://pyenv.run | bash
 # pyenv global 3.12.4 ->use this version for this user
 # pyenv shell <version> ->just for current shell session
 # pyenv local <version> ->for current dir and subdirs
+
+# neovim setup, https://github.com/AstroNvim/AstroNvim?tab=readme-ov-file
+git clone --depth 1 https://github.com/AstroNvim/template $env:LOCALAPPDATA\nvim
+rm -rf ~/.config/nvim/.git
+# nvim
 
 # copy all the dotfiles over
 for i in .bashrc bin .config .ctags .dircolors .emacs.d .fzf .gitconfig .gitconfig.personal initial_setup.sh .kube-ps1.sh .pythonrc.py .screenrc .tmux.conf .vimrc

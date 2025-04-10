@@ -20,9 +20,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ~/.local/bin/uv venv ~/venvs/misc --python ${MY_PYTHON_VERSION}
 
 # install and setup asdf
-if [ ! -d ~/.asdf ]; then
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
-  . $HOME/.asdf/asdf.sh
+if [ ! -f ~/bin/asdf ]; then
+  # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.16.0
+  cd ~/packages
+  wget https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-arm64.tar.gz
+  tar zxvf asdf-v0.16.7-linux-arm64.tar.gz
+  chmod +x asdf
+  mv asdf ~/bin
 fi
 
 # install the rest using asdf.
@@ -34,8 +38,9 @@ cat ~/.tool-versions | awk ' {print $1}' | xargs -I _ asdf plugin add _
 # and then install them
 asdf install
 while read line; do
-  asdf global $line
+  asdf set $line
 done <~/.tool-versions
+asdf reshim
 
 # krew plugins
 kubectl krew install ctx ns tail tree
