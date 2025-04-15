@@ -23,6 +23,32 @@ require("lazy").setup({
   { "folke/tokyonight.nvim", lazy = false, priority = 1, config = function() vim.cmd[[colorscheme tokyonight-night]] end },
   { "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' } },
   {
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/nvim-cmp", -- Ensure nvim-cmp is present
+    "hrsh7th/cmp-nvim-lsp", -- Ensure cmp-nvim-lsp is present
+  },
+  config = function()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+    require("mason").setup()
+    local mason_lspconfig = require("mason-lspconfig")
+    mason_lspconfig.setup {
+      ensure_installed = { "pyright" },
+    }
+
+    local lspconfig = require("lspconfig")
+    lspconfig.pyright.setup {
+      capabilities = capabilities,
+    }
+  end,
+  lazy = true, -- Lazy load the plugin
+  event = { "BufReadPre", "BufNewFile" }, -- Load when a buffer is opened
+  },
+  {
     "zbirenbaum/copilot-cmp",
     event = "InsertEnter",
     config = function () require("copilot_cmp").setup() end,
@@ -51,3 +77,4 @@ require("lazy").setup({
     -- See Commands section for default commands if you want to lazy load on them
   },
 }, {})
+require'nvim-tree'.setup {}
