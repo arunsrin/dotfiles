@@ -16,3 +16,12 @@ map("v", "<leader>d", '"+d', { desc = "Delete to system clipboard" })
 
 -- Terminal mode keymaps
 map("t", "<C-w>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Font
+vim.opt.guifont = 'Hack:h12'
+
+-- resize windows
+map("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+map("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+map("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+map("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
