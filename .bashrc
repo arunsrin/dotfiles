@@ -131,12 +131,6 @@ fi
 export DOCKER_BUILDKIT=0
 source ~/venvs/misc/bin/activate
 
-# Source asdf if it exists
-# https://asdf-vm.com/guide/getting-started.html
-if [ -d ~/.asdf ]; then
-#  . $HOME/.asdf/asdf.sh
-  # . $HOME/.asdf/completions/asdf.bash
-fi
 # new asdf vars:
 ASDF_DATA_DIR="/home/asrinivasan/.asdf"
 

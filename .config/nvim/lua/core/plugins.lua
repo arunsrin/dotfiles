@@ -42,9 +42,9 @@ require("lazy").setup({
     }
 
 --    local lspconfig = require("lspconfig")
-    lspconfig.pyright.setup {
-      capabilities = capabilities,
-    }
+--    lspconfig.pyright.setup {
+--      capabilities = capabilities,
+--    }
   end,
   lazy = true, -- Lazy load the plugin
   event = { "BufReadPre", "BufNewFile" }, -- Load when a buffer is opened
