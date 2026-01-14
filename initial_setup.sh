@@ -8,8 +8,8 @@ sudo apt install emacs-nox git fzf jq python3 python-is-python3 virtualenv \
   python3-dev python3-pip libxml2-dev xonsh libssl-dev libzmq3-dev \
   libsqlite3-dev build-essential libssl-dev zlib1g-dev \
   libbz2-dev libreadline-dev libsqlite3-dev curl git \
-  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-  python3.10-venv exuberant-ctags
+  xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+  exuberant-ctags
 
 # locale configuration
 sudo locale-gen en_US.UTF-8
