@@ -16,12 +16,13 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "nvim-telescope/telescope.nvim", tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
   { "nvim-telescope/telescope-file-browser.nvim" },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "nvim-treesitter/playground" },
+--  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+--  { "nvim-treesitter/playground" },
   { "windwp/nvim-autopairs" },
   { "lewis6991/gitsigns.nvim" },
   { "folke/tokyonight.nvim", lazy = false, priority = 1, config = function() vim.cmd[[colorscheme tokyonight-night]] end },
   { "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  { "folke/which-key.nvim", config = function() require("which-key").setup() end }, -- Keybinding hints
   {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -40,7 +41,7 @@ require("lazy").setup({
       ensure_installed = { "pyright" },
     }
 
-    local lspconfig = require("lspconfig")
+--    local lspconfig = require("lspconfig")
     lspconfig.pyright.setup {
       capabilities = capabilities,
     }
