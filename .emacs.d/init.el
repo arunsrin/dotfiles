@@ -207,14 +207,18 @@
 ;;; or install all configured below. Mappings route classic modes → ts modes.
 ;;; ----------------------------------------------------------------------------
 
+;; NOTE: revisions are PINNED on purpose. Emacs 29 only supports tree-sitter
+;; language ABI 13-14; the grammars' default branches now compile to ABI 15,
+;; which fails to load ("version-mismatch: 15"). These tags emit ABI <=14.
+;; Do not drop the revision unless you have moved to Emacs 30+.
 (setq treesit-language-source-alist
-      '((python     . ("https://github.com/tree-sitter/tree-sitter-python"))
-        (go         . ("https://github.com/tree-sitter/tree-sitter-go"))
-        (gomod      . ("https://github.com/camdencheek/tree-sitter-go-mod"))
-        (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"))
-        (json       . ("https://github.com/tree-sitter/tree-sitter-json"))
-        (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml"))
-        (markdown   . ("https://github.com/ikatyang/tree-sitter-markdown"))))
+      '((python     . ("https://github.com/tree-sitter/tree-sitter-python"   "v0.21.0"))
+        (go         . ("https://github.com/tree-sitter/tree-sitter-go"       "v0.21.0"))
+        (gomod      . ("https://github.com/camdencheek/tree-sitter-go-mod"   "v1.0.2"))
+        (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"     "v0.21.0"))
+        (json       . ("https://github.com/tree-sitter/tree-sitter-json"     "v0.21.0"))
+        (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml"        "v0.5.0"))
+        (markdown   . ("https://github.com/ikatyang/tree-sitter-markdown"    "v0.7.1"))))
 
 ;; Prefer ts modes when their grammar is installed.
 (setq major-mode-remap-alist
