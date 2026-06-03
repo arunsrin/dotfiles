@@ -32,9 +32,8 @@ function    mygetcert        {  echo |     openssl s_client -connect $1 2>/dev/n
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="vim"
-export VISUAL="vim"
-export VISUAL="vim"
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="$EDITOR"
 export PATH=$HOME/.asdf/shims:$HOME/bin/:$PATH:$HOME/.local/bin
 TZ='Asia/Kolkata'; export TZ
 # fzf
