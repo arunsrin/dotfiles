@@ -1,15 +1,33 @@
 # Windows & PowerShell Modern CLI Setup Guide
 
-This guide documents the modern CLI toolchain configured for your Windows 11 ARM64 environment. It is designed to match and exceed the capabilities of your Linux dotfiles ([`.bashrc`](.bashrc), [`.tool-versions`](.tool-versions), and [`.config/starship.toml`](.config/starship.toml)), giving you a rich, keyboard-driven terminal workflow.
+This guide documents the modern CLI toolchain configured for your Windows environment. It is designed to match and exceed the capabilities of your Linux dotfiles ([`.bashrc`](../.bashrc), [`.tool-versions`](../.tool-versions), and [`.config/starship.toml`](../.config/starship.toml)), giving you a rich, keyboard-driven terminal workflow.
+
+---
+
+## Quick Start on a New Laptop
+
+To replicate this exact setup on another Windows machine (ARM64 or x64):
+
+1. Clone your dotfiles repository:
+   ```powershell
+   git clone git@github.com:arunsrin/dotfiles.git $HOME\code\dotfiles
+   cd $HOME\code\dotfiles
+   ```
+2. Run the automated setup script (works from standard Windows PowerShell 5.1 or PowerShell 7):
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   .\win\initial_setup.ps1
+   ```
+3. Restart Windows Terminal and select **PowerShell 7**.
 
 ---
 
 ## Architecture & Directory Layout
 
-- **Shell Engine**: PowerShell 7.6+ (`pwsh.exe`) installed in `~/bin/PowerShell/7`.
+- **Shell Engine**: PowerShell 7 (`pwsh.exe`) in `~/bin/PowerShell/7` or system PATH.
 - **Profiles**:
-  - PowerShell 7 Profile: `~/OneDrive/Documents/PowerShell/Microsoft.PowerShell_profile.ps1`
-  - Windows PowerShell 5.1 Profile: `~/OneDrive/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1`
+  - PowerShell 7 Profile: `~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1` (or OneDrive equivalent)
+  - Windows PowerShell Profile: `~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1`
   - Tracked in Dotfiles: `win/Microsoft.PowerShell_profile.ps1`
 - **Config Files**:
   - Starship: `~/.config/starship.toml`

@@ -25,6 +25,14 @@ This script can be run repeatedly and is fairly simple. It:
 The only manual steps currently are mentioned in the `.vimrc` header, for
 vundle setup.
 
+### Windows Setup
+
+For a modern PowerShell 7 + Windows Terminal setup mirroring this environment, see [win/README.md](win/README.md) and run:
+
+`powershell
+.\win\initial_setup.ps1
+`
+
 ## Emacs
 
 `.emacs.d/init.el` is a modern, `use-package`-based config on stock Emacs 29+
